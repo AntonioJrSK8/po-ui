@@ -7,18 +7,23 @@ import { PoModule } from '@po-ui/ng-components';
 import { RouterModule } from '@angular/router';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeNewComponent } from './employee-new/employee-new.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeNewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PoModule,
     RouterModule.forRoot([]),
-    PoTemplatesModule
+    PoTemplatesModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
