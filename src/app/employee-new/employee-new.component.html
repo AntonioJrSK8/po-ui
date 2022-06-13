@@ -1,7 +1,15 @@
 <p>
+    
     <label for="">Nome:</label>
     <input type="text" [(ngModel)]="name"><button type="button" (click)="addEmployee($event)">Add</button>
-
     {{name}}
 
+    <po-container>
+        <po-input
+        p-label="Nome"
+        [(ngModel)]="name"
+        >
+
+        </po-input>
+    </po-container>
 </p>

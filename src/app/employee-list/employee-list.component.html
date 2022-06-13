@@ -1,1 +1,21 @@
-<p>employee-list works!</p>
+<po-container>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <th>{{employee.name}}</th>
+            </tr>
+        </tbody>
+    </table>
+</po-container>
+
+<po-container>
+    <po-table
+        [p-items]="employees"
+    >
+    </po-table>
+</po-container>
