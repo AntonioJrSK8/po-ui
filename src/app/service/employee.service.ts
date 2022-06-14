@@ -14,4 +14,9 @@ export class EmployeeService {
   employee: Employee[] =[];
 
   constructor() { }
+
+  addEmployee(employee: Employee) {
+
+    this.employee.push(employee);
+  }
 }

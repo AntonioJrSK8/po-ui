@@ -22,7 +22,10 @@ export class EmployeeNewComponent implements OnInit {
   }
 
   addEmployee(event: any) {
-    this.employeeService.employee.push(this.employee);
+    
+    const copy = Object.assign({}, this.employee);
+
+    this.employeeService.addEmployee(copy);
   }
 
 }
