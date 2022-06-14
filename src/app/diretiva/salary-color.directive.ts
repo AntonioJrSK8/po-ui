@@ -9,7 +9,7 @@ export class SalaryColorDirective {
 
   constructor(private element: ElementRef) {
     setTimeout(() => {
-      const el = this.element.nativeElement
+      const el: HTMLElement = this.element.nativeElement
       
       el.style.color = this.SalaryColor > 1000 ? 'green':'red';
 
