@@ -7,9 +7,12 @@ export class SalaryColorDirective {
   @Input()
   SalaryColor: any;
 
-  constructor(private el: ElementRef) {
+  constructor(private element: ElementRef) {
     setTimeout(() => {
-      this.el.nativeElement.innerHTML = this.SalaryColor;      
+      const el = this.element.nativeElement
+      
+      el.style.color = this.SalaryColor > 1000 ? 'green':'red';
+
     }, 2000);
    }
 

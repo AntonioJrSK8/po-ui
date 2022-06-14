@@ -8,7 +8,8 @@
         <tbody>
             <tr *ngFor="let employee of employees">
                 <td>{{employee.name}}</td>
-                <td [style.color]="employee.salary>100? 'green  ' : 'red'">{{employee.salary}}</td>
+                <!-- <td [style.color]="employee.salary>100? 'green  ' : 'red'">{{employee.salary}}</td> -->
+                <td [SalaryColor]="employee.salary">{{employee.salary}}</td>
                 <td *ngIf="employee.bonus > 100 "> {{employee.bonus}} </td>
             </tr>
         </tbody>
