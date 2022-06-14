@@ -1,5 +1,7 @@
 interface employee {
-    name: string
+    name: string;
+    salary: number;
+    bonus: number;
 }
 
 const employee: employee[] = [];

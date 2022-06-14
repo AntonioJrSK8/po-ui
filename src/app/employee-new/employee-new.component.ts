@@ -9,15 +9,18 @@ import employee from '../interface/employees';
 export class EmployeeNewComponent implements OnInit {
   
   name = '';
+  salary = 0; 
+  bonus = 0;
+
   employees = employee;
-  
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   addEmployee(event: any) {
-    this.employees.push({name : this.name});
+    this.employees.push({name : this.name, salary: this.salary, bonus: this.bonus});
   }
 
 }

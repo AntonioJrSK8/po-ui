@@ -7,15 +7,25 @@
         </thead>
         <tbody>
             <tr *ngFor="let employee of employees">
-                <th>{{employee.name}}</th>
+                <td>{{employee.name}}</td>
+                <td [style.color]="employee.salary>100? 'green  ' : 'red'">{{employee.salary}}</td>
+                <td *ngIf="employee.bonus > 100 "> {{employee.bonus}} </td>
             </tr>
         </tbody>
     </table>
 </po-container>
-
+<br>
 <po-container>
     <po-table
-        [p-items]="employees"
+        [p-columns]="columns"
+        [p-items]="employees"   
     >
+
+    <ng-template p-table-cell-template let-column="column" let-row="row">
+        <div *ngIf="column.property === 'name'">
+          <h1 [style.background]="'red'">{{row.name}}</h1>
+        </div>
+    </ng-template>
+      
     </po-table>
 </po-container>

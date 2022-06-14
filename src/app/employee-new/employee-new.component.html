@@ -1,15 +1,22 @@
 <p>
     
-    <label for="">Nome:</label>
-    <input type="text" [(ngModel)]="name"><button type="button" (click)="addEmployee($event)">Add</button>
-    {{name}}
+    <label for="name">Nome:</label>
+    <input type="text" [(ngModel)]="name">
+    
+    <label for="salary">Salario:</label>
+    <input type="text" [(ngModel)]="salary">
+    
+    <label for="bonus">Bonus:</label>
+    <input type="text" [(ngModel)]="bonus">
+    
+    <button type="button" (click)="addEmployee($event)">Add</button>
+    <br><br>
 
     <po-container>
         <po-input
         p-label="Nome"
         [(ngModel)]="name"
-        >
-
-        </po-input>
+        ></po-input>
     </po-container>
+    <br>
 </p>
