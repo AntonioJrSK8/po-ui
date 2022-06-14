@@ -2,13 +2,13 @@
     <p SalaryColor="oi"> </p>
 
     <label for="name">Nome:</label>
-    <input type="text" [(ngModel)]="name">
+    <input type="text" [(ngModel)]="employee.name">
     
     <label for="salary">Salario:</label>
-    <input type="text" [(ngModel)]="salary">
+    <input type="text" [(ngModel)]="employee.salary">
     
     <label for="bonus">Bonus:</label>
-    <input type="text" [(ngModel)]="bonus">
+    <input type="text" [(ngModel)]="employee.bonus">
     
     <button type="button" (click)="addEmployee($event)">Add</button>
     <br><br>
@@ -16,7 +16,7 @@
     <po-container>
         <po-input
         p-label="Nome"
-        [(ngModel)]="name"
+        [(ngModel)]="employee.name"
         ></po-input>
     </po-container>
     <br>
