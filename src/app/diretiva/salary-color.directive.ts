@@ -11,7 +11,7 @@ export class SalaryColorDirective {
     setTimeout(() => {
       const el: HTMLElement = this.element.nativeElement
       
-      el.style.color = this.SalaryColor > 1000 ? 'green':'red';
+      el.style.color = parseFloat(this.SalaryColor) > 1000 ? 'green':'red';
 
     }, 2000);
    }
