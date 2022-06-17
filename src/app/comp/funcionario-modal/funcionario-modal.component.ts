@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
 
 
@@ -17,6 +17,9 @@ export class FuncionarioModalComponent implements OnInit {
     celular: '',
     salario: 0,
   };
+  
+  @Output()
+  onSubmit: EventEmitter<Funcionario> = new EventEmitter<Funcionario>();
 
   constructor(private element: ElementRef, private funcionarioService: FuncionarioService) { }
 
@@ -37,10 +40,21 @@ export class FuncionarioModalComponent implements OnInit {
   }
   
   addFuncionario(funcionario:any){
+    
     this.funcionarioService.add(funcionario);
+    this.onSubmit.emit(funcionario);
+
     setTimeout(() => {
       this.hide();
     }, 1000);
+  }
+
+  editarFuncionario(funcionario: Funcionario){
+   
+      console.log(funcionario);
+      this.funcionario = funcionario;
+
+      this.show();
   }
 
 }
