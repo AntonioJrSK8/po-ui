@@ -10,7 +10,21 @@ import { PoMenuItem } from '@po-ui/ng-components';
 export class AppComponent {
 
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) }
+    { label: 'Home', icon:'po-icon-warehouse', link:'/' },
+    { label: 'Recursos Humanos', icon:'po-icon-waiter',
+      subItems: [
+        { label: 'Funcionário', link:'/funcionario'},
+      ]
+    },
+    { label: 'Contratos', icon:'po-icon-layers', link:'/funcionario',
+      subItems: [
+        { label: 'Medições', link: 'http://trabalho.gov.br/' },
+        { label: 'Aditivos', link: 'http://www.sindpd.com.br/' },
+        { label: 'Saldos', link: 'http://www.sindpd.com.br/' },
+      ]
+    },
+    { label: 'Outros', icon:'po-icon-settings', action: this.onClick.bind(this) },
+
   ];
 
   private onClick() {

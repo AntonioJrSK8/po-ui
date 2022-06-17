@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PoTableColumn } from '@po-ui/ng-components';
-import employee from '../interface/employees';
-import { EmployeeService } from '../service/employee.service';
+import employee from '../../interface/employees';
+import { EmployeeService } from '../../service/employee.service';
 
 @Component({
   selector: 'app-employee-list',

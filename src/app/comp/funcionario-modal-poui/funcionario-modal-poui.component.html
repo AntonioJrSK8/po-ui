@@ -1,0 +1,15 @@
+<po-modal #modal 
+    p-title="Identificação Funcionário"
+    [p-primary-action]="confirm" 
+    [p-secondary-action]="close">
+    
+    <form #optionsForm="ngForm">
+        
+        <po-input name="nome" p-label="Nome" [(ngModel)]="funcionario.nome"> </po-input>
+        <po-input name="cpf" p-label="CPF" [(ngModel)]="funcionario.cpf"> </po-input>
+        <po-input name="celular" p-label="Celular" [(ngModel)]="funcionario.celular"> </po-input>
+        <po-input name="salario" p-label="salario" [(ngModel)]="funcionario.salario"> </po-input>
+
+    </form>
+
+</po-modal>

@@ -1,0 +1,33 @@
+<div class="po-row">
+    <div class="po-md-3 po-lg-2">
+        <po-button-group 
+            [p-buttons]="butoes"> 
+        </po-button-group>
+    </div>    
+</div>
+
+<div class="po-row">
+    <po-table 
+        [p-items]="funcionarios"
+        [p-columns]="colunas"
+        [p-selectable]="true"
+        (p-selected)="selecionados($event)"
+        [p-striped]="true"
+        [p-sort]="true"
+        [p-actions]="actions"
+        (p-unselected)="unselecionados($event)"
+        >
+        <ng-template p-table-cell-template let-column="column" let-row="row">
+            <div *ngIf="column.property === 'celular'">
+              <span [style.color]="'green'">{{row.celular}} </span>
+            </div>
+            <div *ngIf="column.property === 'salario'">
+                <span [style.color]="row.salario>1000?'green':'red'">{{row.salario}} </span>
+            </div>
+        </ng-template>
+
+    </po-table>
+</div>
+
+<funcionario-modal></funcionario-modal>
+<funcionario-modal-poui></funcionario-modal-poui>
