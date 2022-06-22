@@ -13,6 +13,11 @@ import { SalaryColorDirective } from './diretiva/salary-color.directive';
 import { FuncionarioComponent } from './comp/funcionario/funcionario.component';
 import { FuncionarioModalComponent } from './comp/funcionario-modal/funcionario-modal.component';
 import { FuncionarioModalPouiComponent } from './comp/funcionario-modal-poui/funcionario-modal-poui.component';
+import { AlertSuccessComponent } from './comp/alert-success/alert-success.component';
+import { FuncionarioModalEditComponent } from './comp/funcionario-modal-edit/funcionario-modal-edit.component';
+import { FuncionarioModalExclusaoComponent } from './comp/funcionario-modal-exclusao/funcionario-modal-exclusao.component';
+import { MyCurrencyPipe } from './pipe/my-currency.pipe';
+import { ModalComponent } from './comp/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { FuncionarioModalPouiComponent } from './comp/funcionario-modal-poui/fun
     SalaryColorDirective,
     FuncionarioComponent,
     FuncionarioModalComponent,
-    FuncionarioModalPouiComponent
+    FuncionarioModalPouiComponent,
+    AlertSuccessComponent,
+    FuncionarioModalEditComponent,
+    FuncionarioModalExclusaoComponent,
+    MyCurrencyPipe,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,9 @@ import { FuncionarioModalPouiComponent } from './comp/funcionario-modal-poui/fun
     PoTableModule
     
   ],
-  providers: [],
+  providers: [
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

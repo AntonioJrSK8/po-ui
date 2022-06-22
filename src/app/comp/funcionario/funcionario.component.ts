@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PoButtonGroupItem, PoNotificationService, PoTableAction, PoTableColumn, PoTableComponent } from '@po-ui/ng-components';
-import { FuncionarioService } from 'src/app/service/funcionario.service';
+import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
+import { FuncionarioModalEditComponent } from '../funcionario-modal-edit/funcionario-modal-edit.component';
+import { FuncionarioModalExclusaoComponent } from '../funcionario-modal-exclusao/funcionario-modal-exclusao.component';
 import { FuncionarioModalPouiComponent } from '../funcionario-modal-poui/funcionario-modal-poui.component';
 import { FuncionarioModalComponent } from '../funcionario-modal/funcionario-modal.component';
 
@@ -14,21 +16,42 @@ export class FuncionarioComponent implements OnInit {
   @ViewChild(FuncionarioModalComponent) funcionarioModal: FuncionarioModalComponent | any;
   @ViewChild(FuncionarioModalPouiComponent) funcionarioModalPoui: FuncionarioModalPouiComponent | any;
   @ViewChild(PoTableComponent) poTable: PoTableComponent | any;
+  @ViewChild(FuncionarioModalEditComponent) funcionarioModalEdit: FuncionarioModalEditComponent | any;
+  @ViewChild(FuncionarioModalExclusaoComponent) funcionarioModalExclusao: FuncionarioModalExclusaoComponent | any;
 
   funcionarios = this.funcionarioService.Funcionarios;
-  //funcionariosSelecionados: Array<Funcionario> = [];
+
+  funcionarioToEdit: Funcionario = {
+    nome: '',
+    cpf: '',
+    celular: '',
+    salario: 0,
+    bonus:0,
+  };
+  
+  funcionarioToDestroy: Funcionario = {
+    nome: '',
+    cpf: '',
+    celular: '',
+    salario: 0,
+    bonus:0,
+  }
+
+  registrado: boolean = false;
 
   colunas: PoTableColumn[] = [
     { property: 'nome', width: '30%' },
     { property: 'cpf', width: '30%' },
     { property: 'celular', width: '30%', type: 'cellTemplate' },
     { property: 'salario', width: '30%', type: 'cellTemplate' },
+    { property: 'bonus', width: '30%', type: 'cellTemplate' },
   ];
 
   butoes: Array<PoButtonGroupItem> = [
     { icon: 'po-icon-document', action: () => (this.novoFuncionario()), tooltip: 'Novo' },
-    { icon: 'po-icon-edit', action: () => (this.funcionarioModalPoui.showModal()), tooltip: 'Editar' },
-    { icon: 'po-icon-delete', action: () => (this.totalSelecionados()), tooltip: 'Excluir' }
+    { icon: 'po-icon-edit', action: () => (this.editFuncionario()), tooltip: 'Editar' },
+    { icon: 'po-icon-delete', action: () => (this.destroyFuncionario()), tooltip: 'Excluir' },
+    { icon: 'po-icon-delete2', action: () => (this.funcionarioModalPoui.showModal()), tooltip: 'Excluir PO-UI' }
   ];
 
   actions: Array<PoTableAction> = [
@@ -70,18 +93,38 @@ export class FuncionarioComponent implements OnInit {
   }
   
   totalSelecionados(): number{
-    // this.funcionariosSelecionados.length = 0;
-    // this.funcionariosSelecionados.push(this.poTable.getSelectedRows());
     return this.poTable.getSelectedRows().length;
-    // console.table(this.poTable.getSelectedRows());
   }
 
   addFuncionario(funcionario:any){
-    console.table(funcionario);
-  }
+    this.registrado = true;
 
+    setTimeout(() => {
+      this.registrado = false;
+    }, 2000);
+
+  }
   novoFuncionario(){
     this.funcionarioModal.funcionario = [];
     this.funcionarioModal.show();
+  }
+
+  editFuncionario(){
+    if (this.totalSelecionados()==1) {
+       this.funcionarioToEdit = this.poTable.getSelectedRows()[0];
+       this.funcionarioModalEdit.show();
+    } else {
+        this.poNotification.error('Selecionar apenas um registro');
+    }
+  }
+
+  destroyFuncionario(){
+    if (this.totalSelecionados()==1) {
+      this.funcionarioToDestroy = this.poTable.getSelectedRows()[0];
+      this.funcionarioModalExclusao.show();
+
+   } else {
+       this.poNotification.error('Selecionar apenas um registro');
+   }
   }
 }

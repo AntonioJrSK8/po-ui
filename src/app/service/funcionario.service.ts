@@ -4,7 +4,8 @@ export interface Funcionario {
   nome: string;
   cpf: string;
   celular: string;
-  salario:number
+  salario:number;
+  bonus:number;
 }
 
 @Injectable({
@@ -18,9 +19,15 @@ export class FuncionarioService {
 
   add(funcionario: Funcionario){
     const copy = Object.assign({}, funcionario);
-
     this.Funcionarios.push(copy);
-
+  }
+  edit(funcionario: Funcionario){
+    //
+  }
+  destroy(funcionario: Funcionario){
+    const index = this.Funcionarios.indexOf(funcionario);
+    console.log('index: ', index);
+    this.Funcionarios.splice(index, 1);
   }
 
 }

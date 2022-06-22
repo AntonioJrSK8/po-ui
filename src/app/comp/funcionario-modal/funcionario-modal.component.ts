@@ -1,5 +1,7 @@
-import { Component, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';  
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
+import { ModalComponent } from '../modal/modal.component';
+import { Modalable } from '../modal/modalable';
 
 
 declare const $: any;
@@ -9,6 +11,7 @@ declare const $: any;
   templateUrl: './funcionario-modal.component.html',
   styleUrls: ['./funcionario-modal.component.css']
 })
+
 export class FuncionarioModalComponent implements OnInit {
 
   funcionario: Funcionario = {
@@ -16,10 +19,13 @@ export class FuncionarioModalComponent implements OnInit {
     cpf: '',
     celular: '',
     salario: 0,
+    bonus:0,
   };
   
   @Output()
   onSubmit: EventEmitter<Funcionario> = new EventEmitter<Funcionario>();
+  
+  @ViewChild(ModalComponent) modal!: ModalComponent | any;
 
   constructor(private element: ElementRef, private funcionarioService: FuncionarioService) { }
 
@@ -27,33 +33,22 @@ export class FuncionarioModalComponent implements OnInit {
   }
 
   show(){
-    const divModal = this.getDivModal();
-    $(divModal).modal('show');
+    console.log(this.modal)
+    this.modal.show()
   }
+
   hide(){
-    const divModal = this.getDivModal();
-    $(divModal).modal('hide');
-  }
-  getDivModal(): HTMLElement {
-    const el: HTMLElement = this.element.nativeElement;
-    return el.firstChild?.firstChild as HTMLElement;
+    this.modal.hide();
   }
   
   addFuncionario(funcionario:any){
-    
     this.funcionarioService.add(funcionario);
     this.onSubmit.emit(funcionario);
-
-    setTimeout(() => {
-      this.hide();
-    }, 1000);
+    this.hide();
   }
 
   editarFuncionario(funcionario: Funcionario){
-   
-      console.log(funcionario);
       this.funcionario = funcionario;
-
       this.show();
   }
 

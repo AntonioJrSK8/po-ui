@@ -1,35 +1,24 @@
 <form (submit)="addFuncionario(funcionario)">
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <app-modal>
+    <h5 class="modal-title" modal-title>Identificação Funcionário</h5>
 
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Identificação Funcionário</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body">
-
-            <label for="name">Nome:</label>
-            <input class="form-control" type="text" name="nome" [(ngModel)]="funcionario.nome">
-            
-            <label for="cpf">CPF:</label>
-            <input class="form-control" type="text" name="cpf" [(ngModel)]="funcionario.cpf">
-            
-            <label for="celular">Celular:</label>
-            <input class="form-control" type="text" name="celular" [(ngModel)]="funcionario.celular">
-
-            <label for="salario">Salario:</label>
-            <input class="form-control" type="text" name="salario" [(ngModel)]="funcionario.salario">
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-primary">Salvar</button>
-        </div>
-
+      <div class="modal-body" modal-body>
+        <label for="name">Nome:</label>
+        <input class="form-control" type="text" name="nome" [(ngModel)]="funcionario.nome">
+        <label for="cpf">CPF:</label>
+        <input class="form-control" type="text" name="cpf" [(ngModel)]="funcionario.cpf">
+        <label for="celular">Celular:</label>
+        <input class="form-control" type="text" name="celular" [(ngModel)]="funcionario.celular">
+        <label for="salario">Salario:</label>
+        <input class="form-control" type="text" name="salario" [(ngModel)]="funcionario.salario">
+        <label for="bonus">bonus:</label>
+        <input class="form-control" type="text" name="bonus" [(ngModel)]="funcionario.bonus">
       </div>
-    </div>
-  </div>
+
+      <div class="modal-footer" modal-footer>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+  </app-modal>
+
 </form>

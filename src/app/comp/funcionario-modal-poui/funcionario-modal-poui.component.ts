@@ -19,6 +19,7 @@ export class FuncionarioModalPouiComponent implements OnInit {
     cpf: '',
     celular: '',
     salario: 0,
+    bonus:0,
   };
   
   constructor(private funcionarioService: FuncionarioService, private poNotification: PoNotificationService) { }
