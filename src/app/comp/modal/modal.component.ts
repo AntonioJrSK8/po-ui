@@ -34,6 +34,10 @@ export class ModalComponent extends Modalable implements OnInit {
    }
 
   ngOnInit(): void {
+    const el: HTMLElement = this.element.nativeElement;
+    el.querySelector('[modal-title]')?.classList.add('modal-title');
+    el.querySelector('[modal-body]')?.classList.add('modal-body');
+    el.querySelector('[modal-footer]')?.classList.add('modal-footer');
   }
 
   override show(){
