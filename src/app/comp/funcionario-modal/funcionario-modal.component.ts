@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';  
+import { Component, ElementRef, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
 import { ModalComponent } from '../modal/modal.component';
 import { Modalable } from '../modal/modalable';
@@ -21,10 +21,10 @@ export class FuncionarioModalComponent implements OnInit {
     salario: 0,
     bonus:0,
   };
-  
+
   @Output()
   onSubmit: EventEmitter<Funcionario> = new EventEmitter<Funcionario>();
-  
+
   @ViewChild(ModalComponent) modal!: ModalComponent | any;
 
   constructor(private element: ElementRef, private funcionarioService: FuncionarioService) { }
@@ -33,14 +33,13 @@ export class FuncionarioModalComponent implements OnInit {
   }
 
   show(){
-    console.log(this.modal)
     this.modal.show()
   }
 
   hide(){
     this.modal.hide();
   }
-  
+
   addFuncionario(funcionario:any){
     this.funcionarioService.add(funcionario);
     this.onSubmit.emit(funcionario);

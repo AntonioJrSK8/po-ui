@@ -9,14 +9,16 @@ declare const $:any;
     <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        
+
         <div class="modal-header">
           <ng-content select="[modal-title]"></ng-content>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <ng-content select="[modal-body]"></ng-content>
+
         <ng-content select="[modal-footer]"></ng-content>
-        
+
       </div>
     </div>
   </div>
@@ -34,17 +36,17 @@ export class ModalComponent extends Modalable implements OnInit {
   ngOnInit(): void {
   }
 
-  // override show(){
-  //   const divModal = this.getDivModal();
-  //   $(divModal).modal('show');
-  // }
+  override show(){
+    // const divModal = this.getDivModal();
+    $(this.getDivModal).modal('show');
+  }
 
-  // override hide(){
-  //   const divModal = this.getDivModal();
-  //   $(divModal).modal('hide');
-  // }
+  override hide(){
+    // const divModal = this.getDivModal();
+    $(this.getDivModal).modal('hide');
+  }
 
-  getDivModal(): HTMLElement {
+  get getDivModal(): HTMLElement {
     const el: HTMLElement = this.element.nativeElement;
     return el.firstChild as HTMLElement;
   }
