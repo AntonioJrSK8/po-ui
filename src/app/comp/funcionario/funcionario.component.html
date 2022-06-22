@@ -1,14 +1,14 @@
 <alert-success [hidden]="!registrado">Gravado com sucesso!</alert-success>
 <div class="po-row">
     <div class="po-md-3 po-lg-2">
-        <po-button-group 
-            [p-buttons]="butoes"> 
+        <po-button-group
+            [p-buttons]="butoes">
         </po-button-group>
-    </div>    
+    </div>
 </div>
 
 <div class="po-row">
-    <po-table 
+    <po-table
         [p-items]="funcionarios"
         [p-columns]="colunas"
         [p-selectable]="true"
@@ -22,9 +22,9 @@
             <div *ngIf="column.property === 'celular'">
               <span [style.color]="'green'">{{row.celular}} </span>
             </div>
-            
+
             <div *ngIf="column.property === 'salario'">
-                <span [style.color]="row.salario>1000?'green':'red'">{{row.salario}} </span>
+                <span [style.color]="row.salario>1000?'green':'red'">{{row.salario | currency:'BRL':'symbol-narrow':'3.2-2'}} </span>
             </div>
 
             <div *ngIf="column.property === 'bonus'">

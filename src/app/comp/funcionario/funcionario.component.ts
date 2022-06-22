@@ -28,7 +28,7 @@ export class FuncionarioComponent implements OnInit {
     salario: 0,
     bonus:0,
   };
-  
+
   funcionarioToDestroy: Funcionario = {
     nome: '',
     cpf: '',
@@ -69,11 +69,11 @@ export class FuncionarioComponent implements OnInit {
   },
 ];
 
-  constructor(private funcionarioService: FuncionarioService, private poNotification: PoNotificationService) {};
+  constructor(private funcionarioService: FuncionarioService, private poNotification: PoNotificationService) {}
 
   ngOnInit(): void {
   }
-  
+
   editar(){
     if (this.totalSelecionados()==1)
       this.funcionarioModal.editarFuncionario(this.poTable.getSelectedRows()[0])
@@ -85,20 +85,20 @@ export class FuncionarioComponent implements OnInit {
   }
 
   selecionados(item: any){
-    //
+    console.log(item);
   }
 
   unselecionados(item:any){
-    //    
+    console.log(item);
   }
-  
+
   totalSelecionados(): number{
     return this.poTable.getSelectedRows().length;
   }
 
   addFuncionario(funcionario:any){
+    console.log(funcionario);
     this.registrado = true;
-
     setTimeout(() => {
       this.registrado = false;
     }, 2000);

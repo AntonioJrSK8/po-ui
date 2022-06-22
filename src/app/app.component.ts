@@ -11,9 +11,8 @@ export class AppComponent implements OnInit {
   @ViewChild(PoMenuComponent, { static: true }) menu!: PoMenuComponent;
 
   ngOnInit(): void {
-
     this.menu.expand();
-    console.log(this.menu);
+    // console.log(this.menu);
   }
 
   readonly menus: Array<PoMenuItem> = [
