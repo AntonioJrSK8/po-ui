@@ -1,13 +1,20 @@
 <div class="po-wrapper">
   <po-toolbar p-title="TOTVS Devs. with PO-UI "></po-toolbar>
 
-  <po-menu [p-menus]="menus"></po-menu>
+  <po-menu
+    [p-menus]="menus"
+  >
+  <ng-template p-menu-header-template>
+    <img src="../assets/img/totvs-logo.jpg" alt="" style="width: 250px; height: 90px;">
+  </ng-template>
+
+  </po-menu>
 
   <po-page-default p-title="TOTVS+">
-    
+
     <!-- <app-employee-new></app-employee-new>
     <app-employee-list></app-employee-list> -->
-    
+
     <router-outlet></router-outlet>
   </po-page-default>
 </div>

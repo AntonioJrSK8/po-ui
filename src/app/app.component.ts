@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { PoMenuItem } from '@po-ui/ng-components';
+import { PoMenuItem, PoMenuComponent } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @ViewChild(PoMenuComponent, { static: true }) menu!: PoMenuComponent;
+
+  ngOnInit(): void {
+
+    this.menu.expand();
+    console.log(this.menu);
+  }
 
   readonly menus: Array<PoMenuItem> = [
     { label: 'Home', icon:'po-icon-warehouse', link:'/' },

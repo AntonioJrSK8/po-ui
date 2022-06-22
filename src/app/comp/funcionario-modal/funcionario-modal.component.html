@@ -1,5 +1,5 @@
 <form (submit)="addFuncionario(funcionario)">
-  <app-modal>
+  <app-modal (onHide)="fechou($event)" (onShow)="mostrar($event)">
     <h5 class="modal-title" modal-title>Identificação Funcionário</h5>
 
       <div class="modal-body" modal-body>

@@ -39,6 +39,12 @@ export class FuncionarioModalComponent implements OnInit {
   hide(){
     this.modal.hide();
   }
+  fechou(event:any){
+    console.log(event);
+  }
+  mostrar(event:any){
+    console.log('mostrar ', event)
+  }
 
   addFuncionario(funcionario:any){
     this.funcionarioService.add(funcionario);

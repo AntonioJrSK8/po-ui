@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
 import { Modalable } from './modalable';
 
 declare const $:any;
@@ -29,6 +29,12 @@ declare const $:any;
 
 export class ModalComponent extends Modalable implements OnInit {
 
+  @Output()
+  onHide: EventEmitter<any> = new EventEmitter();
+
+  @Output()
+  onShow: EventEmitter<any> = new EventEmitter();
+
   constructor(private element: ElementRef) {
     super();
    }
@@ -38,6 +44,17 @@ export class ModalComponent extends Modalable implements OnInit {
     el.querySelector('[modal-title]')?.classList.add('modal-title');
     el.querySelector('[modal-body]')?.classList.add('modal-body');
     el.querySelector('[modal-footer]')?.classList.add('modal-footer');
+
+    $(this.getDivModal).on('hidden.bs.modal', (e: any) => {
+      console.log('esconder ',e);
+      this.onHide.emit(e);
+    });
+
+    $(this.getDivModal).on('shown.bs.modal', (e: any) => {
+      console.log('mostrar ', e);
+      this.onShow.emit(e);
+    });
+
   }
 
   override show(){
