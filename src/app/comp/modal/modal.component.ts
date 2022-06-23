@@ -29,9 +29,7 @@ export class ModalComponent implements OnInit {
   @Output()
   onShow: EventEmitter<any> = new EventEmitter();
 
-  constructor(private element: ElementRef) {
-
-   }
+  constructor(private element: ElementRef) {}
 
   ngOnInit(): void {
     const el: HTMLElement = this.element.nativeElement;
@@ -65,5 +63,6 @@ export class ModalComponent implements OnInit {
     const el: HTMLElement = this.element.nativeElement;
     return el.firstChild as HTMLElement;
   }
+
 
 }

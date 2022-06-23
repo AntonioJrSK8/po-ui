@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
 import { Modalable } from './../modal/modalable';
-// import { ModalComponent } from './../modal/modal.component';
+import { ModalComponent } from './../modal/modal.component';
 
 
 declare const $: any;
@@ -25,26 +25,28 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
   @Output()
   onSubmit: EventEmitter<Funcionario> = new EventEmitter<Funcionario>();
 
-  // @ViewChild(ModalComponent) modalComp!: ModalComponent | any;
+  @ViewChild(ModalComponent)
+  modalComp: ModalComponent = new ModalComponent(this.element);
 
-  constructor(private funcionarioService: FuncionarioService) {
+  constructor(private funcionarioService: FuncionarioService, private element: ElementRef) {
     super();
   }
 
   override ngOnInit() {
     super.ngOnInit();
-    // this.modal.onHide.subscribe((event: any) => {
+    // console.log(this.modalComp)
+    // this.modalComp.onHide.subscribe((event: any) => {
     //   console.log(event);
     // });
   }
 
-  // override show(){
-  //   this.modal.show()
-  // }
+  override show(){
+    this.modalComp.show()
+  }
 
-  // override hide(){
-  //   this.modal.hide();
-  // }
+  override hide(){
+    this.modalComp.hide();
+  }
 
   fechou(event:any){
     console.log('fechou ',event);

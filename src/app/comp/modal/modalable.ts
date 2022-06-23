@@ -1,11 +1,11 @@
-import { Directive, EventEmitter, OnInit, Output, ViewChild } from "@angular/core";
+import { EventEmitter, Injectable, OnInit, Output, ViewChild } from "@angular/core";
 import { ModalComponent } from "./modal.component";
 
-@Directive()
+@Injectable()
 export class Modalable implements OnInit{
 
     @ViewChild(ModalComponent)
-      modal!: ModalComponent;
+    modal!: ModalComponent;
 
     @Output()
     onHide: EventEmitter<any> = new EventEmitter();
@@ -13,8 +13,12 @@ export class Modalable implements OnInit{
     @Output()
     onShow: EventEmitter<any> = new EventEmitter();
 
+
+    constructor(){}
+
     ngOnInit(): void {
-      console.log('ModalComp ',this.modal);
+
+      console.log('ModalComp ',this);
       this.modal.onHide.subscribe((event: any) => {
         console.log(event);
         //this.onHide.emit(event);
