@@ -5,7 +5,7 @@ import { ModalComponent } from "./modal.component";
 export class Modalable implements OnInit{
 
     @ViewChild(ModalComponent)
-    modal!: ModalComponent;
+    modalComponent!: ModalComponent;
 
     @Output()
     onHide: EventEmitter<any> = new EventEmitter();
@@ -18,24 +18,18 @@ export class Modalable implements OnInit{
 
     ngOnInit(): void {
 
-      console.log('ModalComp ',this);
-      this.modal.onHide.subscribe((event: any) => {
+    this.modalComponent.onHide.subscribe((event: any) => {
         console.log(event);
-        //this.onHide.emit(event);
+        this.onHide.emit(event);
       });
-
-      // this.modal.onShow.subscribe((event: any) => {
-      //     console.log(event);
-      //     this.onShow.emit(event);
-      // });
     }
 
     show(){
-        this.modal.show();
+        this.modalComponent.show();
     }
 
     hide(){
-        this.modal.hide();
+        this.modalComponent.hide();
     }
 
 }

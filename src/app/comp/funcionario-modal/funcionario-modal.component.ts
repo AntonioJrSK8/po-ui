@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
-import { Modalable } from './../modal/modalable';
+import { Modalable } from '../modal/modalable';
 import { ModalComponent } from './../modal/modal.component';
 
 
@@ -28,25 +28,28 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
   @ViewChild(ModalComponent)
   modalComp: ModalComponent = new ModalComponent(this.element);
 
+  @ViewChild('inputNome') inputNome!: HTMLElement;
+
   constructor(private funcionarioService: FuncionarioService, private element: ElementRef) {
     super();
   }
 
   override ngOnInit() {
     super.ngOnInit();
-    // console.log(this.modalComp)
-    // this.modalComp.onHide.subscribe((event: any) => {
-    //   console.log(event);
-    // });
+    this.onShow.subscribe(()=>{
+        console.log('show');
+    });  
+    
   }
 
-  override show(){
-    this.modalComp.show()
-  }
+  // show(){
+  //   // console.log('Input ',this.inputNome);
+  //   this.modalComp.show()
+  // }
 
-  override hide(){
-    this.modalComp.hide();
-  }
+  // hide(){
+  //   this.modalComp.hide();
+  // }
 
   fechou(event:any){
     console.log('fechou ',event);
