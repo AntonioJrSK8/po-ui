@@ -25,6 +25,9 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
   @Output()
   onSubmit: EventEmitter<Funcionario> = new EventEmitter<Funcionario>();
 
+  @Output()
+  override onHide: EventEmitter<any> = new EventEmitter();
+
   @ViewChild(ModalComponent)
   modalComp: ModalComponent = new ModalComponent(this.element);
 
@@ -35,21 +38,21 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
   }
 
   override ngOnInit() {
-    super.ngOnInit();
+
     setTimeout(() => {
       this.modalComponent.onHide.subscribe(event => {
-        console.log('subscribe');
+        console.log('subscribe', event);
+        this.onHide.emit(event);
       })
     }, 1);
-
-
-    // super.ngOnInit();
-    // this.onShow.subscribe(()=>{
-    //     console.log('show');
-    // });
-
   }
 
+  override ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log('After Content Init FuncionarioMoral');
+    super.ngAfterContentInit();
+  }
   // show(){
   //   // console.log('Input ',this.inputNome);
   //   this.modalComp.show()

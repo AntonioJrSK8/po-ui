@@ -18,13 +18,12 @@ export class Modalable implements OnInit{
 
     ngOnInit(): void {
 
-      setTimeout(() => {
-        this.modalComponent.onHide.subscribe((event: any) => {
-          console.log(event);
-          this.onHide.emit(event);
-        });
-      }, 1000);
+    }
 
+    ngAfterContentInit(): void {
+      //Called after ngOnInit when the component's or directive's content has been initialized.
+      //Add 'implements AfterContentInit' to the class.
+      console.log('After Content Init Modalable')
     }
 
     show(){

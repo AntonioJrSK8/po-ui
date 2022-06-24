@@ -88,6 +88,9 @@ export class FuncionarioComponent implements OnInit {
     console.log(item);
   }
 
+  fechou(event:any){
+    console.log('funcionario componente ',event);
+  }
   unselecionados(item:any){
     console.log(item);
   }

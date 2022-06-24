@@ -49,6 +49,12 @@ export class ModalComponent implements OnInit {
 
   }
 
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log('After Content Init ModalComponent')
+  }
+
   show(){
     // const divModal = this.getDivModal();
     $(this.getDivModal).modal('show');

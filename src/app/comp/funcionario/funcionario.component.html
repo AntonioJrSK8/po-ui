@@ -35,7 +35,7 @@
     </po-table>
 </div>
 
-<funcionario-modal (onSubmit)="addFuncionario($event)"></funcionario-modal>
+<funcionario-modal (onSubmit)="addFuncionario($event)" (onHide)="fechou($event)"></funcionario-modal>
 <funcionario-modal-edit [funcionario]="funcionarioToEdit"></funcionario-modal-edit>
 <funcionario-modal-exclusao [funcionario]="funcionarioToDestroy"></funcionario-modal-exclusao>
 
