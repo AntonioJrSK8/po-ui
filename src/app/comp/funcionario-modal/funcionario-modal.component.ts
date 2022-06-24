@@ -36,10 +36,18 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
 
   override ngOnInit() {
     super.ngOnInit();
-    this.onShow.subscribe(()=>{
-        console.log('show');
-    });  
-    
+    setTimeout(() => {
+      this.modalComponent.onHide.subscribe(event => {
+        console.log('subscribe');
+      })
+    }, 1);
+
+
+    // super.ngOnInit();
+    // this.onShow.subscribe(()=>{
+    //     console.log('show');
+    // });
+
   }
 
   // show(){

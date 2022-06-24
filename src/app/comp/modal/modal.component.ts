@@ -24,7 +24,7 @@ declare const $:any;
 export class ModalComponent implements OnInit {
 
   @Output()
-  onHide: EventEmitter<any> = new EventEmitter();
+  public onHide: EventEmitter<any> = new EventEmitter();
 
   @Output()
   onShow: EventEmitter<any> = new EventEmitter();
