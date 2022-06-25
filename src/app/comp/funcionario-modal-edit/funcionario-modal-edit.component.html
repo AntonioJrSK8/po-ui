@@ -21,7 +21,11 @@
   
               <label for="salario">Salario:</label>
               <input class="form-control" type="text" name="salario" [(ngModel)]="funcionario.salario">
-  
+              <div *ngIf="funcionario.bonus > 0; else notBonus">
+                <label for="bonus">bonus:</label>
+                <input class="form-control" type="text" name="bonus" [(ngModel)]="funcionario.bonus">
+              </div>
+              <ng-template #notBonus>Sem bonus.</ng-template>
           </div>
   
           <div class="modal-footer">

@@ -24,11 +24,11 @@
             </div>
 
             <div *ngIf="column.property === 'salario'">
-                <span [style.color]="row.salario>1000?'green':'red'">{{row.salario | currency:'BRL':'symbol-narrow':'3.2-2'}} </span>
+                <span [style.color]="row.salario>1000?'green':'red'">{{row.salario | currency:'BRL':'symbol-narrow':'0.2-2'}} </span>
             </div>
 
             <div *ngIf="column.property === 'bonus'">
-                <span>{{row.bonus | currency:'BRL':'symbol-narrow':'3.2-2'}}</span>
+                <span>{{row.bonus | currency:'BRL':'symbol-narrow':'0.2-2'}}</span>
             </div>
         </ng-template>
 
