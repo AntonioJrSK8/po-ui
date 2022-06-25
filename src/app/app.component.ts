@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     { label: 'Recursos Humanos', icon:'po-icon-waiter',
       subItems: [
         { label: 'Funcionário', link:'/funcionario'},
+        { label: 'Funcionário2', link:'/lista'},
       ]
     },
     { label: 'Contratos', icon:'po-icon-layers', link:'/funcionario',

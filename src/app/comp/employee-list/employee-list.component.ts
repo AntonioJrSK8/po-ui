@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoTableColumn } from '@po-ui/ng-components';
+import { FuncionarioService } from 'src/app/service/funcionario.service';
 import employee from '../../interface/employees';
 import { EmployeeService } from '../../service/employee.service';
 
@@ -10,15 +11,15 @@ import { EmployeeService } from '../../service/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees = this.employeeService.employee;
+  employees = this.funcionarioService.Funcionarios;
    
   columns: Array<PoTableColumn> = [
-      { property: 'name', width: '50%', type: 'cellTemplate'},
-      { property: 'salary', width: '40%' },
+      { property: 'nome', width: '50%', type: 'cellTemplate'},
+      { property: 'salario', width: '40%' },
       { property: 'bonus', width: '10%' },
   ];
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
     

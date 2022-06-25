@@ -1,17 +1,21 @@
 <po-container>
-    <table>
+    <table width="100%">
         <thead>
             <tr>
                 <th>Nome</th>
             </tr>
         </thead>
         <tbody>
+
             <tr *ngFor="let employee of employees">
-                <td>{{employee.name}}</td>
-                <!-- <td [style.color]="employee.salary>100? 'green  ' : 'red'">{{employee.salary}}</td> -->
-                <td [SalaryColor]="employee.salary">{{employee.salary}}</td>
-                <td *ngIf="employee.bonus > 100 "> {{employee.bonus}} </td>
+                <ng-container *ngIf="employee.salario > 100">
+                    <td>{{employee.nome}}</td>
+                    <!-- <td [style.color]="employee.salary>100? 'green  ' : 'red'">{{employee.salary}}</td> -->
+                    <td [SalaryColor]="employee.salario">{{ employee.salario | currency:'BRL':'symbol-narrow':'0.2-2' }}</td>
+                    <td *ngIf="employee.bonus > 100 "> {{employee.bonus}} </td>
+                </ng-container>
             </tr>
+
         </tbody>
     </table>
 </po-container>
@@ -23,8 +27,8 @@
     >
 
     <ng-template p-table-cell-template let-column="column" let-row="row">
-        <div *ngIf="column.property === 'name'">
-          <h1 [style.background]="'red'">{{row.name}}</h1>
+        <div *ngIf="column.property === 'nome'">
+          <span [style.background]="'green'">{{row.nome}}</span>
         </div>
     </ng-template>
       
