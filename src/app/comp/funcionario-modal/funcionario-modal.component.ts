@@ -31,16 +31,24 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
   @ViewChild(ModalComponent)
   modalComp: ModalComponent = new ModalComponent(this.element);
 
-  @ViewChild('inputNome') inputNome!: HTMLElement;
+  @ViewChild('inputNome') inputNome!: ElementRef;
 
   constructor(private funcionarioService: FuncionarioService, private element: ElementRef) {
     super();
   }
 
   override ngOnInit() {
-
+    
+    setTimeout(() => {
+      this.modalComponent.onShow.subscribe(event=> {
+        console.log(this.inputNome);
+        this.inputNome.nativeElement.focus();
+      })
+    }, 1);
+    
     setTimeout(() => {
       this.modalComponent.onHide.subscribe(event => {
+        
         console.log('subscribe', event);
         this.onHide.emit(event);
       })
@@ -66,6 +74,7 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
     console.log('fechou ',event);
   }
   mostrar(event:any){
+      
     console.log('mostrar ', event)
   }
 
