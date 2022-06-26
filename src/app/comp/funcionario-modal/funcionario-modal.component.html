@@ -5,14 +5,14 @@
 
       <div class="modal-body" modal-body>
         <label for="name">Nome:</label>
-        <input class="form-control" type="text" name="nome" [(ngModel)]="funcionario.nome" #inputNome>
-        
+        <input class="form-control" type="text" name="nome" [(ngModel)]="funcionario.nome" appInput>
+
         <label for="cpf">CPF:</label>
         <input class="form-control" type="text" name="cpf" [(ngModel)]="funcionario.cpf">
         <label for="celular">Celular:</label>
         <input class="form-control" type="text" name="celular" [(ngModel)]="funcionario.celular">
         <label for="salario">Salario:</label>
-        <input class="form-control" type="text" name="salario" [(ngModel)]="funcionario.salario">
+        <input class="form-control" type="text" name="salario" [(ngModel)]="funcionario.salario" #inputSalary>
         <label for="bonus">bonus:</label>
         <input class="form-control" type="text" name="bonus" [(ngModel)]="funcionario.bonus">
       </div>

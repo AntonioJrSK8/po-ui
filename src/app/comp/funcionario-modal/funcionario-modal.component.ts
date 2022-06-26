@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, ViewChildren } from '@angular/core';
+import { InputDirective } from 'src/app/diretiva/input.directive';
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
 import { Modalable } from '../modal/modalable';
 import { ModalComponent } from './../modal/modal.component';
@@ -31,7 +32,11 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
   @ViewChild(ModalComponent)
   modalComp: ModalComponent = new ModalComponent(this.element);
 
-  @ViewChild('inputNome') inputNome!: ElementRef;
+  // @ViewChild('inputNome') inputNome!: ElementRef;
+  // @ViewChild(InputDirective) input!:InputDirective;
+  @ViewChild('inputSalary', {read: InputDirective}) input!:InputDirective;
+
+  @ViewChildren(InputDirective) inputs!: InputDirective;
 
   constructor(private funcionarioService: FuncionarioService, private element: ElementRef) {
     super();
@@ -41,14 +46,14 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
     
     setTimeout(() => {
       this.modalComponent.onShow.subscribe(event=> {
-        console.log(this.inputNome);
-        this.inputNome.nativeElement.focus();
+        // this.inputNome.nativeElement.focus();
+        // console.log(this.input);
+        this.input.focus();
       })
     }, 1);
     
     setTimeout(() => {
       this.modalComponent.onHide.subscribe(event => {
-        
         console.log('subscribe', event);
         this.onHide.emit(event);
       })
@@ -59,6 +64,10 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
     //Called after ngOnInit when the component's or directive's content has been initialized.
     //Add 'implements AfterContentInit' to the class.
     console.log('After Content Init FuncionarioMoral');
+    setTimeout(() => {
+      console.log(this.inputs);  
+    }, 1);
+
     super.ngAfterContentInit();
   }
   // show(){

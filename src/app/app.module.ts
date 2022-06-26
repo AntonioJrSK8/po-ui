@@ -18,6 +18,7 @@ import { FuncionarioModalEditComponent } from './comp/funcionario-modal-edit/fun
 import { FuncionarioModalExclusaoComponent } from './comp/funcionario-modal-exclusao/funcionario-modal-exclusao.component';
 import { MyCurrencyPipe } from './pipe/my-currency.pipe';
 import { ModalComponent } from './comp/modal/modal.component';
+import { InputDirective } from './diretiva/input.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ModalComponent } from './comp/modal/modal.component';
     FuncionarioModalEditComponent,
     FuncionarioModalExclusaoComponent,
     MyCurrencyPipe,
-    ModalComponent
+    ModalComponent,
+    InputDirective
   ],
   imports: [
     BrowserModule,
