@@ -19,6 +19,8 @@ import { FuncionarioModalExclusaoComponent } from './comp/funcionario-modal-excl
 import { MyCurrencyPipe } from './pipe/my-currency.pipe';
 import { ModalComponent } from './comp/modal/modal.component';
 import { InputDirective } from './diretiva/input.directive';
+import { GetViewContainerDirective } from './diretiva/get-view-container.directive';
+import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { InputDirective } from './diretiva/input.directive';
     FuncionarioModalExclusaoComponent,
     MyCurrencyPipe,
     ModalComponent,
-    InputDirective
+    InputDirective,
+    GetViewContainerDirective,
+    ComponenteDynamicComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +49,13 @@ import { InputDirective } from './diretiva/input.directive';
     PoTemplatesModule,
     FormsModule,
     PoTableModule
-    
+
+  ],
+  entryComponents:[
+    ComponenteDynamicComponent
   ],
   providers: [
-   
+
   ],
   bootstrap: [AppComponent]
 })

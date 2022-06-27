@@ -23,7 +23,7 @@
 <po-container>
     <po-table
         [p-columns]="columns"
-        [p-items]="employees"   
+        [p-items]="employees"
     >
 
     <ng-template p-table-cell-template let-column="column" let-row="row">
@@ -31,6 +31,6 @@
           <span [style.background]="'green'">{{row.nome}}</span>
         </div>
     </ng-template>
-      
+
     </po-table>
 </po-container>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoTableColumn } from '@po-ui/ng-components';
 import { FuncionarioService } from 'src/app/service/funcionario.service';
-import employee from '../../interface/employees';
 import { EmployeeService } from '../../service/employee.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { EmployeeService } from '../../service/employee.service';
 export class EmployeeListComponent implements OnInit {
 
   employees = this.funcionarioService.Funcionarios;
-   
+
   columns: Array<PoTableColumn> = [
       { property: 'nome', width: '50%', type: 'cellTemplate'},
       { property: 'salario', width: '40%' },
@@ -22,7 +21,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
-    
+
     console.log(this.columns);
   }
 

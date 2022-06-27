@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 import { PoMenuItem, PoMenuComponent } from '@po-ui/ng-components';
+import { GetViewContainerDirective } from './diretiva/get-view-container.directive';
+import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,12 @@ import { PoMenuItem, PoMenuComponent } from '@po-ui/ng-components';
 })
 export class AppComponent implements OnInit {
   @ViewChild(PoMenuComponent, { static: true }) menu!: PoMenuComponent;
+
+  // @ViewChild('employeelista', {read: ViewContainerRef}) viewContainer!: ViewContainerRef
+
+  @ViewChild('template') template!: TemplateRef<any>;
+
+  @ViewChild(GetViewContainerDirective, {static: true}) getContainer!: GetViewContainerDirective;
 
   ngOnInit(): void {
     this.menu.expand();
@@ -36,6 +44,16 @@ export class AppComponent implements OnInit {
 
   private onClick() {
     alert('Clicked in menu item')
+  }
+
+  ngAfterViewInit(): void {
+    // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    // Add 'implements AfterViewInit' to the class.
+    // this.viewContainer.createEmbeddedView(this.template);
+    const viewConteiner = this.getContainer.viewContainerRef;
+          // viewConteiner.clear();
+          viewConteiner.createComponent<any>(ComponenteDynamicComponent);
+
   }
 
 }
