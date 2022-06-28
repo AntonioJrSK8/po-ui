@@ -24,6 +24,9 @@ import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente
 import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
 import { ModalDynamicComponent } from './comp/modal-dynamic/modal-dynamic/modal-dynamic.component';
 import { ModalContentDirective } from './comp/modal-dynamic/modal-content.directive';
+import { ModalTitleComponent } from './comp/modal-dynamic/modal-title/modal-title.component';
+import { ModalBodyComponent } from './comp/modal-dynamic/modal-body/modal-body.component';
+import { ModalFooterComponent } from './comp/modal-dynamic/modal-footer/modal-footer.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { ModalContentDirective } from './comp/modal-dynamic/modal-content.direct
     ComponenteDynamicComponent,
     ComponenteDynamic2Component,
     ModalDynamicComponent,
-    ModalContentDirective
+    ModalContentDirective,
+    ModalTitleComponent,
+    ModalBodyComponent,
+    ModalFooterComponent
   ],
   imports: [
     BrowserModule,
