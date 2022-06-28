@@ -3,6 +3,7 @@ import { PoMenuItem, PoMenuComponent } from '@po-ui/ng-components';
 import { GetViewContainerDirective } from './diretiva/get-view-container.directive';
 import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
 import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
+import { ModalServiceService } from './comp/modal-dynamic/modal-service.service';
 
 @Component({
   selector: 'app-root',
@@ -21,19 +22,23 @@ export class AppComponent implements OnInit {
   components = [ComponenteDynamicComponent, ComponenteDynamic2Component];
   indexComponents = -1;
 
+  constructor(private modalService: ModalServiceService){}
+
   ngOnInit(): void {
-    this.menu.expand();
+    // this.menu.expand();
     // console.log(this.menu);
-    
-    const viewConteiner = this.getContainer.viewContainerRef;
-    setInterval(()=>{
-      viewConteiner.clear();
-      this.indexComponents++;
-      if(this.indexComponents === this.components.length){
-        this.indexComponents = 0;  
-      }
-      viewConteiner.createComponent<any>(this.components[this.indexComponents]);
-    }, 4000);
+
+    // const viewConteiner = this.getContainer.viewContainerRef;
+    // setInterval(()=>{
+    //   viewConteiner.clear();
+    //   this.indexComponents++;
+    //   if(this.indexComponents === this.components.length){
+    //     this.indexComponents = 0;
+    //   }
+    //   viewConteiner.createComponent<any>(this.components[this.indexComponents]);
+    // }, 4000);
+
+    this.modalService.open('');
   }
 
   readonly menus: Array<PoMenuItem> = [
@@ -74,7 +79,7 @@ export class AppComponent implements OnInit {
     //   viewConteiner.clear();
     //   this.indexComponents++;
     //   if(this.indexComponents === this.components.length){
-    //     this.indexComponents = 0;  
+    //     this.indexComponents = 0;
     //   }
     //   viewConteiner.createComponent<any>(this.components[this.indexComponents]);
     // }, 4000);
