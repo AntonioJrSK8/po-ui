@@ -21,6 +21,7 @@ import { ModalComponent } from './comp/modal/modal.component';
 import { InputDirective } from './diretiva/input.directive';
 import { GetViewContainerDirective } from './diretiva/get-view-container.directive';
 import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
+import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente
     ModalComponent,
     InputDirective,
     GetViewContainerDirective,
-    ComponenteDynamicComponent
+    ComponenteDynamicComponent,
+    ComponenteDynamic2Component
   ],
   imports: [
     BrowserModule,

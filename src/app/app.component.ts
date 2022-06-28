@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-
 import { PoMenuItem, PoMenuComponent } from '@po-ui/ng-components';
 import { GetViewContainerDirective } from './diretiva/get-view-container.directive';
 import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
+import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +18,22 @@ export class AppComponent implements OnInit {
 
   @ViewChild(GetViewContainerDirective, {static: true}) getContainer!: GetViewContainerDirective;
 
+  components = [ComponenteDynamicComponent, ComponenteDynamic2Component];
+  indexComponents = -1;
+
   ngOnInit(): void {
     this.menu.expand();
     // console.log(this.menu);
+    
+    const viewConteiner = this.getContainer.viewContainerRef;
+    setInterval(()=>{
+      viewConteiner.clear();
+      this.indexComponents++;
+      if(this.indexComponents === this.components.length){
+        this.indexComponents = 0;  
+      }
+      viewConteiner.createComponent<any>(this.components[this.indexComponents]);
+    }, 4000);
   }
 
   readonly menus: Array<PoMenuItem> = [
@@ -46,13 +59,25 @@ export class AppComponent implements OnInit {
     alert('Clicked in menu item')
   }
 
+
   ngAfterViewInit(): void {
     // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     // Add 'implements AfterViewInit' to the class.
     // this.viewContainer.createEmbeddedView(this.template);
-    const viewConteiner = this.getContainer.viewContainerRef;
-          // viewConteiner.clear();
-          viewConteiner.createComponent<any>(ComponenteDynamicComponent);
+    //const viewConteiner = this.getContainer.viewContainerRef;
+    // viewConteiner.clear();
+    // viewConteiner.createComponent<any>(ComponenteDynamicComponent);
+
+    // Qaundo é usado com diretiva não é necessário utilizar ngAfterViewInit pode ser usado também ngOnInit
+    // const viewConteiner = this.getContainer.viewContainerRef;
+    // setInterval(()=>{
+    //   viewConteiner.clear();
+    //   this.indexComponents++;
+    //   if(this.indexComponents === this.components.length){
+    //     this.indexComponents = 0;  
+    //   }
+    //   viewConteiner.createComponent<any>(this.components[this.indexComponents]);
+    // }, 4000);
 
   }
 
