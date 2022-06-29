@@ -27,6 +27,7 @@ import { ModalContentDirective } from './comp/modal-dynamic/modal-content.direct
 import { ModalTitleComponent } from './comp/modal-dynamic/modal-title/modal-title.component';
 import { ModalBodyComponent } from './comp/modal-dynamic/modal-body/modal-body.component';
 import { ModalFooterComponent } from './comp/modal-dynamic/modal-footer/modal-footer.component';
+import { ModalTestComponent } from './comp/modal-dynamic/modal-test/modal-test.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ModalFooterComponent } from './comp/modal-dynamic/modal-footer/modal-fo
     ModalContentDirective,
     ModalTitleComponent,
     ModalBodyComponent,
-    ModalFooterComponent
+    ModalFooterComponent,
+    ModalTestComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { ModalFooterComponent } from './comp/modal-dynamic/modal-footer/modal-fo
 
   ],
   entryComponents:[
-    ComponenteDynamicComponent
+    ComponenteDynamicComponent,
+    ModalTestComponent
   ],
   providers: [
 

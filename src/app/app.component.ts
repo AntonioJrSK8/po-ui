@@ -4,6 +4,7 @@ import { GetViewContainerDirective } from './diretiva/get-view-container.directi
 import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
 import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
 import { ModalServiceService } from './comp/modal-dynamic/modal-service.service';
+import { ModalTestComponent } from './comp/modal-dynamic/modal-test/modal-test.component';
 
 @Component({
   selector: 'app-root',
@@ -37,8 +38,9 @@ export class AppComponent implements OnInit {
     //   }
     //   viewConteiner.createComponent<any>(this.components[this.indexComponents]);
     // }, 4000);
-
-    this.modalService.open('');
+    setTimeout(()=>{
+      this.modalService.open(ModalTestComponent);
+    },100);
   }
 
   readonly menus: Array<PoMenuItem> = [

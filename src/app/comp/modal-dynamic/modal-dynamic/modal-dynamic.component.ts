@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ModalContentDirective } from './../modal-content.directive';
 
 declare const $: any;
@@ -21,15 +21,19 @@ export class ModalDynamicComponent implements OnInit {
 
   @ViewChild(ModalContentDirective) modalContentDirective!: ModalContentDirective;
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef, private componentFactoryResolver : ComponentFactoryResolver) { }
 
   ngOnInit(): void {
   }
 
   mount(modalImplementedComponent: any){
-    const modalContent = this.modalContentDirective.viewContainerRef;
-    modalContent.clear();
-    modalContent.createComponent<any>(modalImplementedComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
+    const viewContainerRef = this.modalContentDirective.viewContainerRef;
+    viewContainerRef.createComponent(componentFactory);
+
+    // const modalContent = this.modalContentDirective.viewContainerRef;
+    // modalContent.clear();
+    // modalContent.createComponent<any>(modalImplementedComponent);
   }
 
   show(){
