@@ -19,9 +19,10 @@ declare const $: any;
 })
 export class ModalDynamicComponent implements OnInit {
 
-  @ViewChild(ModalContentDirective) modalContentDirective!: ModalContentDirective;
+  @ViewChild(ModalContentDirective , {static: true }) modalContentDirective!: ModalContentDirective;
 
-  constructor(private element: ElementRef, private componentFactoryResolver : ComponentFactoryResolver) { }
+  constructor(private element: ElementRef, 
+              private componentFactoryResolver : ComponentFactoryResolver) { }
 
   ngOnInit(): void {
   }
