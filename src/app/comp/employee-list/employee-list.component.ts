@@ -21,8 +21,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
-
-    console.log(this.columns);
+    // console.log(this.columns);
   }
 
 }

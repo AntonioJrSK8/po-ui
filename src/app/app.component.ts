@@ -3,7 +3,7 @@ import { PoMenuItem, PoMenuComponent } from '@po-ui/ng-components';
 import { GetViewContainerDirective } from './diretiva/get-view-container.directive';
 import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
 import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
-import { ModalServiceService } from './comp/modal-dynamic/modal-service.service';
+import { ModalService } from './comp/modal-dynamic/modal.service';
 import { ModalTestComponent } from './comp/modal-dynamic/modal-test/modal-test.component';
 
 @Component({
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   components = [ComponenteDynamicComponent, ComponenteDynamic2Component];
   indexComponents = -1;
 
-  constructor(private modalService: ModalServiceService){}
+  constructor(private modalService: ModalService){}
 
   ngOnInit(): void {
     // this.menu.expand();
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     //   viewConteiner.createComponent<any>(this.components[this.indexComponents]);
     // }, 4000);
 
-    this.modalService.open(ModalTestComponent);
+    // this.modalService.open(ModalTestComponent);
 
   }
 

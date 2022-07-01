@@ -12,9 +12,11 @@ export class ModalTestComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.modalRef);
-    // setTimeout(() => {
-    //   this.modalRef.hide();
-    // }, 2000);
+
+    setTimeout(() => {
+      this.modalRef.hide();
+    }, 2000);
+
   }
 
 }

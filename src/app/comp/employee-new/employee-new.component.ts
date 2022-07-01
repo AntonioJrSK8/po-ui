@@ -24,7 +24,6 @@ export class EmployeeNewComponent implements OnInit {
   addEmployee(event: any) {
     console.log(event);
     const copy = Object.assign({}, this.employee);
-
     this.employeeService.addEmployee(copy);
   }
 

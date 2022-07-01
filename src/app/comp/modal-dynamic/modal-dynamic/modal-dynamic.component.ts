@@ -25,16 +25,22 @@ export class ModalDynamicComponent implements OnInit {
   modalRef!: ModalRefService;
 
   constructor(private element: ElementRef,
-              private injector: Injector) { }
+              private injector: Injector,
+              private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
   }
 
   mount(modalImplementedComponent: any){
-    const modalContent = this.modalContentDirective.viewContainerRef;
-    modalContent.clear();
-    modalContent.createComponent<any>(modalImplementedComponent, undefined, this.makeLocalInjector());
-    // return this.modalRef;
+    // const modalContent = this.modalContentDirective.viewContainerRef;
+    // modalContent.clear();
+    // modalContent.createComponent<any>(modalImplementedComponent, undefined, this.makeLocalInjector());
+
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
+    const viewContainerRef = this.modalContentDirective.viewContainerRef;
+    viewContainerRef.createComponent(componentFactory, undefined, this.makeLocalInjector());
+
+    return this.modalRef;
   }
 
   private makeLocalInjector(){

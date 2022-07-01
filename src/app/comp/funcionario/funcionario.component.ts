@@ -5,6 +5,8 @@ import { FuncionarioModalEditComponent } from '../funcionario-modal-edit/funcion
 import { FuncionarioModalExclusaoComponent } from '../funcionario-modal-exclusao/funcionario-modal-exclusao.component';
 import { FuncionarioModalPouiComponent } from '../funcionario-modal-poui/funcionario-modal-poui.component';
 import { FuncionarioModalComponent } from '../funcionario-modal/funcionario-modal.component';
+import { EmployeeNewComponent } from './../employee-new/employee-new.component';
+import { ModalService } from './../modal-dynamic/modal.service';
 
 @Component({
   selector: 'app-funcionario',
@@ -51,6 +53,7 @@ export class FuncionarioComponent implements OnInit {
     { icon: 'po-icon-document', action: () => (this.novoFuncionario()), tooltip: 'Novo' },
     { icon: 'po-icon-edit', action: () => (this.editFuncionario()), tooltip: 'Editar' },
     { icon: 'po-icon-delete', action: () => (this.destroyFuncionario()), tooltip: 'Excluir' },
+    { icon: 'po-icon-delete', action: () => (this.novoFuncionario2()), tooltip: 'Excluir' },
     { icon: 'po-icon-delete2', action: () => (this.funcionarioModalPoui.showModal()), tooltip: 'Excluir PO-UI' }
   ];
 
@@ -69,7 +72,7 @@ export class FuncionarioComponent implements OnInit {
   },
 ];
 
-  constructor(private funcionarioService: FuncionarioService, private poNotification: PoNotificationService) {}
+  constructor(private funcionarioService: FuncionarioService, private poNotification: PoNotificationService, private modalService: ModalService) {}
 
   ngOnInit(): void {
   }
@@ -112,6 +115,9 @@ export class FuncionarioComponent implements OnInit {
     this.funcionarioModal.show();
   }
 
+  novoFuncionario2(){
+    this.modalService.open(EmployeeNewComponent);
+  }
   editFuncionario(){
     if (this.totalSelecionados()==1) {
        this.funcionarioToEdit = this.poTable.getSelectedRows()[0];

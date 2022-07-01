@@ -1,24 +1,26 @@
-<div class="container">
-    <p SalaryColor="2000">Valor</p>
+<modal-title>
+    <h4> Cadastro de Employee </h4>
+</modal-title>
 
-    <label for="name">Nome:</label>
-    <input type="text" [(ngModel)]="employee.name">
-    
-    <label for="salary">Salario:</label>
-    <input type="text" [(ngModel)]="employee.salary">
-    
-    <label for="bonus">Bonus:</label>
-    <input type="text" [(ngModel)]="employee.bonus">
-    
-    <button type="button" (click)="addEmployee($event)">Add</button>
-    <br><br>
+<form (submit)="addEmployee($event)">
+  <modal-body>
+      <div>
+        <label for="name">Nome:</label>
+        <input class="form-control" type="text" name="name" [(ngModel)]="employee.name"><br>
 
-    <po-container>
-        <po-input
-        p-label="Nome"
-        [(ngModel)]="employee.name"
-        ></po-input>
-    </po-container>
-    <br>
+        <label for="salary">Salario:</label>
+        <input class="form-control" type="text" name="salary" [(ngModel)]="employee.salary"><br>
 
-</div>
+        <label for="bonus">Bonus:</label>
+        <input class="form-control" type="text" name="bonus" [(ngModel)]="employee.bonus"><br>
+      </div>
+  </modal-body>
+
+  <modal-footer>
+
+    <div>
+        <button class="btn" type="submit">Add</button>
+    </div>
+
+  </modal-footer>
+</form>
