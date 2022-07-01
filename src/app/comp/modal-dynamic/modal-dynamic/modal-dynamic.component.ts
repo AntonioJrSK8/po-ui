@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { ModalContentDirective } from './../modal-content.directive';
+import { ModalRefService } from './../modal-ref.service';
 
 declare const $: any;
 
@@ -21,7 +22,7 @@ export class ModalDynamicComponent implements OnInit {
 
   @ViewChild(ModalContentDirective) modalContentDirective!: ModalContentDirective;
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef, private injector: Injector) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +30,23 @@ export class ModalDynamicComponent implements OnInit {
   mount(modalImplementedComponent: any){
     const modalContent = this.modalContentDirective.viewContainerRef;
     modalContent.clear();
-    modalContent.createComponent<any>(modalImplementedComponent);
+    modalContent.createComponent<any>(modalImplementedComponent, undefined, this.makeLocalInjector());
+  }
+
+  private makeLocalInjector(){
+    return Injector.create({
+      providers: [
+          {provide: ModalRefService, useValue: this.makeModalRef()}
+      ],
+      parent: this.injector
+    });
+  }
+
+  private makeModalRef() {
+    // construindo instancia local
+    const modalRef = new ModalRefService();
+    modalRef.instance = this;
+    return modalRef;
   }
 
   show(){
