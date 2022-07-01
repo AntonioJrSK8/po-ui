@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import { Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
-=======
-import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
->>>>>>> 4b84952f65ef44eea92b67bb2dde3335f47df079
+import { Component, ElementRef, Injector, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+// import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ModalContentDirective } from './../modal-content.directive';
 import { ModalRefService } from './../modal-ref.service';
 
@@ -26,18 +23,13 @@ export class ModalDynamicComponent implements OnInit {
 
   @ViewChild(ModalContentDirective , {static: true }) modalContentDirective!: ModalContentDirective;
 
-<<<<<<< HEAD
-  constructor(private element: ElementRef, private injector: Injector) { }
-=======
-  constructor(private element: ElementRef, 
-              private componentFactoryResolver : ComponentFactoryResolver) { }
->>>>>>> 4b84952f65ef44eea92b67bb2dde3335f47df079
-
+  constructor(private element: ElementRef,
+              private injector: Injector,
+              private componentFactoryResolver: ComponentFactoryResolver) { }
   ngOnInit(): void {
   }
 
   mount(modalImplementedComponent: any){
-<<<<<<< HEAD
     const modalContent = this.modalContentDirective.viewContainerRef;
     modalContent.clear();
     modalContent.createComponent<any>(modalImplementedComponent, undefined, this.makeLocalInjector());
@@ -57,15 +49,13 @@ export class ModalDynamicComponent implements OnInit {
     const modalRef = new ModalRefService();
     modalRef.instance = this;
     return modalRef;
-=======
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
-    const viewContainerRef = this.modalContentDirective.viewContainerRef;
-    viewContainerRef.createComponent(componentFactory);
 
+    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
+    // const viewContainerRef = this.modalContentDirective.viewContainerRef;
+    // viewContainerRef.createComponent(componentFactory);
     // const modalContent = this.modalContentDirective.viewContainerRef;
     // modalContent.clear();
     // modalContent.createComponent<any>(modalImplementedComponent);
->>>>>>> 4b84952f65ef44eea92b67bb2dde3335f47df079
   }
 
   show(){

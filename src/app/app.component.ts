@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
     //   }
     //   viewConteiner.createComponent<any>(this.components[this.indexComponents]);
     // }, 4000);
-    
+
     this.modalService.open(ModalTestComponent);
-    
+
   }
 
   readonly menus: Array<PoMenuItem> = [
