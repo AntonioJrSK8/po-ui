@@ -11,4 +11,7 @@ export class ModalRefService {
   hide() {
     this.instance.hide();
   }
+  show(){
+    this.instance.show();
+  }
 }

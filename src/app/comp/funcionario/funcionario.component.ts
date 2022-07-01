@@ -53,8 +53,8 @@ export class FuncionarioComponent implements OnInit {
     { icon: 'po-icon-document', action: () => (this.novoFuncionario()), tooltip: 'Novo' },
     { icon: 'po-icon-edit', action: () => (this.editFuncionario()), tooltip: 'Editar' },
     { icon: 'po-icon-delete', action: () => (this.destroyFuncionario()), tooltip: 'Excluir' },
-    { icon: 'po-icon-delete', action: () => (this.novoFuncionario2()), tooltip: 'Excluir' },
-    { icon: 'po-icon-delete2', action: () => (this.funcionarioModalPoui.showModal()), tooltip: 'Excluir PO-UI' }
+    { icon: 'po-icon-document', action: () => (this.novoFuncionario2()), tooltip: 'Abrir Modal Teste' },
+    { icon: 'po-icon-delete', action: () => (this.funcionarioModalPoui.showModal()), tooltip: 'Excluir PO-UI' }
   ];
 
   actions: Array<PoTableAction> = [
@@ -72,7 +72,9 @@ export class FuncionarioComponent implements OnInit {
   },
 ];
 
-  constructor(private funcionarioService: FuncionarioService, private poNotification: PoNotificationService, private modalService: ModalService) {}
+  constructor(private funcionarioService: FuncionarioService, 
+              private poNotification: PoNotificationService, 
+              private modalService: ModalService) {}
 
   ngOnInit(): void {
   }
@@ -116,7 +118,9 @@ export class FuncionarioComponent implements OnInit {
   }
 
   novoFuncionario2(){
-    this.modalService.open(EmployeeNewComponent);
+    const modal = this.modalService.create(EmployeeNewComponent);
+    
+    modal.show();
   }
   editFuncionario(){
     if (this.totalSelecionados()==1) {
