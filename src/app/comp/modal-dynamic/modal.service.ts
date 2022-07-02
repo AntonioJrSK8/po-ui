@@ -24,11 +24,16 @@ export class ModalService {
     this.appRef.attachView(componentRef.hostView);
     const domElement = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElement);
-    
+
+    // retorna a referencia do modal referencia
     return this.modalRef;
   }
 
   open() {
     this.modalRef.show();
+  }
+
+  detroy() {
+    
   }
 }

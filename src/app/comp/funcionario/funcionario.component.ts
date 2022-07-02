@@ -53,7 +53,7 @@ export class FuncionarioComponent implements OnInit {
     { icon: 'po-icon-document', action: () => (this.novoFuncionario()), tooltip: 'Novo' },
     { icon: 'po-icon-edit', action: () => (this.editFuncionario()), tooltip: 'Editar' },
     { icon: 'po-icon-delete', action: () => (this.destroyFuncionario()), tooltip: 'Excluir' },
-    { icon: 'po-icon-document', action: () => (this.novoFuncionario2()), tooltip: 'Abrir Modal Teste' },
+    { icon: 'po-icon-document', action: () => (this.novoFuncionarioDynamic()), tooltip: 'Abrir Modal Teste' },
     { icon: 'po-icon-delete', action: () => (this.funcionarioModalPoui.showModal()), tooltip: 'Excluir PO-UI' }
   ];
 
@@ -117,7 +117,7 @@ export class FuncionarioComponent implements OnInit {
     this.funcionarioModal.show();
   }
 
-  novoFuncionario2(){
+  novoFuncionarioDynamic(){
     const modal = this.modalService.create(EmployeeNewComponent);
     modal.onHide.subscribe((event)=>{
       console.log(event);

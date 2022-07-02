@@ -1,4 +1,5 @@
 import { Component, ElementRef, Injector, OnInit, ViewChild, ComponentFactoryResolver, EventEmitter } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
 import { ModalContentDirective } from './../modal-content.directive';
 import { ModalRefService } from './../modal-ref.service';
 
@@ -24,8 +25,12 @@ export class ModalDynamicComponent implements OnInit {
 
   modalRef!: ModalRefService;
 
-  onShow: EventEmitter<any> = new EventEmitter();
-  onHide:   EventEmitter<any> = new EventEmitter();
+  // onShow: EventEmitter<any> = new EventEmitter();
+  // onHide:   EventEmitter<any> = new EventEmitter();
+  onShow: ReplaySubject<any> = new ReplaySubject();
+  onHide: ReplaySubject<any> = new ReplaySubject();
+  
+
   showEventoData = null;
   hideEventoData = null;
 
@@ -34,23 +39,23 @@ export class ModalDynamicComponent implements OnInit {
               private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      $(this.getDivModal).on('hidden.bs.modal', (e:any) => {
-        this.onHide.emit({
-          event: e,
-          data: this.hideEventoData
-        });
-      });
-    }, 1);
+    // setTimeout(() => {
+    //   $(this.getDivModal).on('hidden.bs.modal', (e:any) => {
+    //     this.onHide.next({
+    //       event: e,
+    //       data: this.hideEventoData
+    //     });
+    //   });
+    // }, 1);
     
-    setTimeout(() => {
-      $(this.getDivModal).on('shown.bs.modal',(e:any)=>{
-        this.onShow.emit({
-          event: e,
-          data: this.showEventoData
-        });
-      })
-    }, 1);
+    // setTimeout(() => {
+    //   $(this.getDivModal).on('shown.bs.modal',(e:any)=>{
+    //     this.onShow.next({
+    //       event: e,
+    //       data: this.showEventoData
+    //     });
+    //   })
+    // }, 1);
   }
 
   mount(modalImplementedComponent: any): ModalRefService {
@@ -75,7 +80,6 @@ export class ModalDynamicComponent implements OnInit {
     this.modalRef = new ModalRefService();
     this.modalRef.instance = this;
     return this.modalRef;
-
     // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
     // const viewContainerRef = this.modalContentDirective.viewContainerRef;
     // viewContainerRef.createComponent(componentFactory);
@@ -86,6 +90,7 @@ export class ModalDynamicComponent implements OnInit {
 
   show(event = null){
     // const divModal = this.getDivModal();/
+    this.registerEvents()
     this.showEventoData = event;
     $(this.getDivModal).modal('show');
   }
@@ -99,5 +104,23 @@ export class ModalDynamicComponent implements OnInit {
   get getDivModal(): HTMLElement {
     const el: HTMLElement = this.element.nativeElement;
     return el.firstChild as HTMLElement;
+  }
+ 
+  private registerEvents() {
+    
+      $(this.getDivModal).on('hidden.bs.modal', (e:any) => {
+        this.onHide.next({
+          event: e,
+          data: this.hideEventoData
+        });
+      });
+    
+      $(this.getDivModal).on('shown.bs.modal',(e:any)=>{
+        this.onShow.next({
+          event: e,
+          data: this.showEventoData
+        });
+      })
+    
   }
 }
