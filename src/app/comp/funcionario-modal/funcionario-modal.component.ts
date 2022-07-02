@@ -58,6 +58,7 @@ export class FuncionarioModalComponent extends Modalable implements OnInit {
         this.onHide.emit(event);
       })
     }, 1);
+    
   }
 
   override ngAfterContentInit(): void {

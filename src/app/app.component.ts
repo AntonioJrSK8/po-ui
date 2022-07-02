@@ -4,7 +4,6 @@ import { GetViewContainerDirective } from './diretiva/get-view-container.directi
 import { ComponenteDynamicComponent } from './comp/componente-dynamic/componente-dynamic.component';
 import { ComponenteDynamic2Component } from './comp/componente-dynamic2/componente-dynamic2.component';
 import { ModalService } from './comp/modal-dynamic/modal.service';
-import { ModalTestComponent } from './comp/modal-dynamic/modal-test/modal-test.component';
 
 @Component({
   selector: 'app-root',
@@ -71,7 +70,7 @@ export class AppComponent implements OnInit {
     // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     // Add 'implements AfterViewInit' to the class.
     // this.viewContainer.createEmbeddedView(this.template);
-    //const viewConteiner = this.getContainer.viewContainerRef;
+    // const viewConteiner = this.getContainer.viewContainerRef;
     // viewConteiner.clear();
     // viewConteiner.createComponent<any>(ComponenteDynamicComponent);
 

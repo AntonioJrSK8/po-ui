@@ -119,7 +119,10 @@ export class FuncionarioComponent implements OnInit {
 
   novoFuncionario2(){
     const modal = this.modalService.create(EmployeeNewComponent);
-    
+    modal.onHide.subscribe((event)=>{
+      console.log(event);
+    });
+
     modal.show();
   }
   editFuncionario(){
