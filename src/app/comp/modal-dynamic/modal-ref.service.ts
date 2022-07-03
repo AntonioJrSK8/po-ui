@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ApplicationRef, ComponentRef, Injectable } from '@angular/core';
 import { ModalDynamicComponent } from './modal-dynamic/modal-dynamic.component';
 
 @Injectable()
@@ -7,6 +7,8 @@ export class ModalRefService {
   instance!: ModalDynamicComponent;
 
   contexto: any = {};
+
+  appRef!: ApplicationRef;
 
   constructor() { }
 
@@ -21,5 +23,15 @@ export class ModalRefService {
   }
   get onHide() {
     return this.instance.onHide;
+  }
+  set componentRef(compRef: ComponentRef<ModalDynamicComponent>) {
+    const instance = compRef.instance;
+
+    instance.onHide.subscribe(()=>{
+      instance.dispose();
+      this.appRef.detachView(compRef.hostView);
+      compRef.destroy();
+    });
+
   }
 }

@@ -21,6 +21,10 @@ export class ModalService {
     // montagem do componente
     this.modalRef = componentRef.instance.mount(modalImplementedComponent, contexto);
     
+    // referencia do componente na criação
+    this.modalRef.appRef = this.appRef;
+    this.modalRef.componentRef = componentRef;
+
     // passando o contexto
     // this.modalRef.contexto = contexto;
     

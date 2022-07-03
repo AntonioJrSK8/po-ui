@@ -108,7 +108,11 @@ export class ModalDynamicComponent implements OnInit {
     const el: HTMLElement = this.element.nativeElement;
     return el.firstChild as HTMLElement;
   }
- 
+  
+  dispose() {
+    $(this.getDivModal).modal('dispose');
+  }
+
   private registerEvents() {
     
       $(this.getDivModal).on('hidden.bs.modal', (e:any) => {
