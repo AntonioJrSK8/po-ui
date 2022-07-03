@@ -30,6 +30,7 @@ export class ModalDynamicComponent implements OnInit {
   onShow: ReplaySubject<any> = new ReplaySubject();
   onHide: ReplaySubject<any> = new ReplaySubject();
   
+  contextoModal: any = {};
 
   showEventoData = null;
   hideEventoData = null;
@@ -58,7 +59,8 @@ export class ModalDynamicComponent implements OnInit {
     // }, 1);
   }
 
-  mount(modalImplementedComponent: any): ModalRefService {
+  mount(modalImplementedComponent: any, contexto = {}): ModalRefService {
+    this.contextoModal = contexto;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
     const viewContainerRef = this.modalContentDirective.viewContainerRef;
     viewContainerRef.createComponent(componentFactory, undefined, this.makeLocalInjector());
@@ -79,6 +81,7 @@ export class ModalDynamicComponent implements OnInit {
     // construindo instancia local
     this.modalRef = new ModalRefService();
     this.modalRef.instance = this;
+    this.modalRef.contexto = this.contextoModal;
     return this.modalRef;
     // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(modalImplementedComponent);
     // const viewContainerRef = this.modalContentDirective.viewContainerRef;

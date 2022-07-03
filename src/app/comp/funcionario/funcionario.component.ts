@@ -5,6 +5,7 @@ import { FuncionarioModalEditComponent } from '../funcionario-modal-edit/funcion
 import { FuncionarioModalExclusaoComponent } from '../funcionario-modal-exclusao/funcionario-modal-exclusao.component';
 import { FuncionarioModalPouiComponent } from '../funcionario-modal-poui/funcionario-modal-poui.component';
 import { FuncionarioModalComponent } from '../funcionario-modal/funcionario-modal.component';
+import { ModalRefService } from '../modal-dynamic/modal-ref.service';
 import { EmployeeNewComponent } from './../employee-new/employee-new.component';
 import { ModalService } from './../modal-dynamic/modal.service';
 
@@ -18,7 +19,7 @@ export class FuncionarioComponent implements OnInit {
   @ViewChild(FuncionarioModalComponent) funcionarioModal: FuncionarioModalComponent | any;
   @ViewChild(FuncionarioModalPouiComponent) funcionarioModalPoui: FuncionarioModalPouiComponent | any;
   @ViewChild(PoTableComponent) poTable: PoTableComponent | any;
-  @ViewChild(FuncionarioModalEditComponent) funcionarioModalEdit: FuncionarioModalEditComponent | any;
+  // @ViewChild(FuncionarioModalEditComponent) funcionarioModalEdit: FuncionarioModalEditComponent | any;
   @ViewChild(FuncionarioModalExclusaoComponent) funcionarioModalExclusao: FuncionarioModalExclusaoComponent | any;
 
   funcionarios = this.funcionarioService.Funcionarios;
@@ -126,12 +127,23 @@ export class FuncionarioComponent implements OnInit {
     modal.show();
   }
   editFuncionario(){
+    // if (this.totalSelecionados()==1) {
+    //    this.funcionarioToEdit = this.poTable.getSelectedRows()[0];
+    //    this.funcionarioModalEdit.show();
+    // } else {
+    //     this.poNotification.error('Selecionar apenas um registro');
+    // }
     if (this.totalSelecionados()==1) {
-       this.funcionarioToEdit = this.poTable.getSelectedRows()[0];
-       this.funcionarioModalEdit.show();
+        this.funcionarioToEdit = this.poTable.getSelectedRows()[0]
+        console.log('até ok!!!');
+        const modal = this.modalService.create(FuncionarioModalEditComponent, {funcionario: this.funcionarioToEdit});
+        modal.onHide.subscribe((event)=>{
+          console.log(event);
+        });
+        modal.show();
     } else {
         this.poNotification.error('Selecionar apenas um registro');
-    }
+    } 
   }
 
   destroyFuncionario(){

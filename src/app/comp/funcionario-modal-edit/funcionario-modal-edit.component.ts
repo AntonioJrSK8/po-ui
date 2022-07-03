@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Funcionario, FuncionarioService } from 'src/app/service/funcionario.service';
+import { ModalRefService } from '../modal-dynamic/modal-ref.service';
 
 declare const $: any;
 
@@ -19,7 +20,11 @@ export class FuncionarioModalEditComponent implements OnInit {
     bonus:0,
   };
 
-  constructor(private funcionarioService: FuncionarioService, private element: ElementRef) { }
+  constructor(private funcionarioService: FuncionarioService, 
+              private element: ElementRef,
+              private modalRef: ModalRefService) {
+                  this.funcionario = this.modalRef.contexto['funcionario'];
+               }
 
   ngOnInit(): void {
   }
@@ -37,6 +42,10 @@ export class FuncionarioModalEditComponent implements OnInit {
   }
   editFuncionario(funcionario: Funcionario){
     console.table(funcionario);
-    this.hide();
+    const copy = Object.assign({},funcionario);
+    const data:any = {funcionario: copy, submitted: true};
+    this.modalRef.hide(data);
+
+    // this.hide();
   }
 }

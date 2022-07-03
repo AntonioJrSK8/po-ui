@@ -6,6 +6,8 @@ export class ModalRefService {
 
   instance!: ModalDynamicComponent;
 
+  contexto: any = {};
+
   constructor() { }
 
   hide(event = null) {

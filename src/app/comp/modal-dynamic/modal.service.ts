@@ -13,13 +13,17 @@ export class ModalService {
               private injector: Injector,
               private appRef: ApplicationRef) { }
   
-  create(modalImplementedComponent: any): ModalRefService {
+  create(modalImplementedComponent: any, contexto = {}): ModalRefService {
     // criação e injeção
     const componentRef = this.componentFactory
                             .resolveComponentFactory(ModalDynamicComponent)
                             .create(this.injector);
     // montagem do componente
-    this.modalRef = componentRef.instance.mount(modalImplementedComponent);
+    this.modalRef = componentRef.instance.mount(modalImplementedComponent, contexto);
+    
+    // passando o contexto
+    // this.modalRef.contexto = contexto;
+    
     // add no dom
     this.appRef.attachView(componentRef.hostView);
     const domElement = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
@@ -34,6 +38,6 @@ export class ModalService {
   }
 
   detroy() {
-    
+
   }
 }

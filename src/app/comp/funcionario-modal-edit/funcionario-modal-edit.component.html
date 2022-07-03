@@ -1,4 +1,38 @@
+<modal-title>
+  <div>
+    <h5 class="modal-title" id="exampleModalLabel">Editar Funcionário: {{funcionario.nome}} </h5>
+  </div>
+</modal-title>
 <form (submit)="editFuncionario(funcionario)">
+    <modal-body>
+      <div>
+        <label for="name">Nome:</label>
+        <input class="form-control" type="text" name="nome" [(ngModel)]="funcionario.nome">
+        
+        <label for="cpf">CPF:</label>
+        <input class="form-control" type="text" name="cpf" [(ngModel)]="funcionario.cpf">
+        
+        <label for="celular">Celular:</label>
+        <input class="form-control" type="text" name="celular" [(ngModel)]="funcionario.celular">
+
+        <label for="salario">Salario:</label>
+        <input class="form-control" type="text" name="salario" [(ngModel)]="funcionario.salario">
+        <div *ngIf="funcionario.bonus > 0; else notBonus">
+          <label for="bonus">bonus:</label>
+          <input class="form-control" type="text" name="bonus" [(ngModel)]="funcionario.bonus">
+        </div>
+        <ng-template #notBonus>Sem bonus.</ng-template>
+    </div>
+    </modal-body>
+    <modal-footer>
+      <div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </modal-footer>
+</form>
+  
+<!-- <form (submit)="editFuncionario(funcionario)">
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -9,7 +43,6 @@
           </div>
   
           <div class="modal-body">
-  
               <label for="name">Nome:</label>
               <input class="form-control" type="text" name="nome" [(ngModel)]="funcionario.nome">
               
@@ -36,4 +69,4 @@
         </div>
       </div>
     </div>
-  </form>
+  </form> -->
